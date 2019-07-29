@@ -1,11 +1,17 @@
-# from RPI import GPIO
-# pip install RPi.GPIO
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import RPi.GPIO as GPIO
+# Use GPIO numbers not pin numbers
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(4, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
+
 from time import sleep
 symbols = {' ':'/','A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.', 'F':'..-.', 'G':'--.', 'H':'....', 'I':'..', 'J':'.---', 'K':'-.-', 'L':'.-..', 'M':'--', 'N':'-.', 'O':'---', 'P':'.--.', 'Q':'--.-', 'R':'.-.', 'S':'...', 'T':'-', 'U':'..-', 'V':'...-', 'W':'.--', 'X':'-..-', 'Y':'-.--', 'Z':'--..', 'Å':'.--.-', 'Ä':'.-.-', 'Ö':'---.', '1':'.----', '2':'..---', '3':'...--', '4':'....-', '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.', '0':'-----',
            ',':'--..--', '.':'.-.-.-', '?':'..--..', '/':'-..-.', '-':'-....-', '(':'-.--.', ')':'-.--.-',
            '!':'-.-.--'}
 morse_port = 17
-morse_start = 1
+morse_start = 4
 # Returns "Hey all ." as: ".... . -.--/ .- .-.. .-../ .-.-.-"
 # So letters spacing: " "
 # Word spacing: " / "

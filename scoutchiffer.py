@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# import RPi.GPIO as GPIO
+# Use GPIO numbers not pin numbers
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(4, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
 import morse
 
 default_key = "abcde fghij klmno prstu vyåäö"
