@@ -73,6 +73,7 @@ def send_signal(start,morse=None):
             flash_on(morse_start)
             sleep(0.1)
             flash_off(morse_start)
+            sleep(0.1)
         # print("start End")
 
 def translator(text):
