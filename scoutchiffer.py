@@ -39,7 +39,7 @@ def create_key(key):
 
 def text_to_chiffer(text,key=None):
     if not (isinstance(text, str) or isinstance(key, str) or key == None): TypeError("Must be string or None")
-    if key == None: key = default_key
+    if key == None or key == "": key = default_key
     text = text.upper()
     key = key.upper()
     if not key_OK(text,key): raise ValueError("Key must have format: "+ "abcde fghij klmno prstu vyåäö")
@@ -53,7 +53,7 @@ def text_to_chiffer(text,key=None):
 
 
 def translator_loop(text, key=None):
-    if not isinstance(key, str): TypeError("Must be string")
+    # if not isinstance(key, str): TypeError("Must be string")
     text = text.upper()
     chiffer = text_to_chiffer(text,key)
     morse.translator_loop(chiffer)
@@ -62,8 +62,8 @@ def go(text, key=None):
     translator_loop(text, key)
 
 
-# if __name__ == '__main__':
-#     texten = "Hej"
-#     translator_loop(texten)
-    # a= text_to_chiffer(texten)
-    # print(a)
+if __name__ == '__main__':
+    text = input("Give text to translate to scoutchiffer, then to morse:\n")
+    custom_key = input("Give key (optional) on format:"+default_key+"\n")
+
+    go(text,custom_key)

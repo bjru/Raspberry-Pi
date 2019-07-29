@@ -98,6 +98,6 @@ def translator_loop(text):
 def go(text):
     translator_loop(text)
 
-# if __name__ == '__main__':
-#     texten = "Hej alla scouter!"
-#     go(texten)
+if __name__ == '__main__':
+    text = input("Give text to translate to morse:\n")
+    go(text)
