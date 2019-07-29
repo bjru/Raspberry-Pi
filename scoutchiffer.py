@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # import RPi.GPIO as GPIO
 # Use GPIO numbers not pin numbers
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(4, GPIO.OUT)
-GPIO.setup(17, GPIO.OUT)
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(4, GPIO.OUT)
+# GPIO.setup(17, GPIO.OUT)
 import morse
 
 default_key = "abcde fghij klmno prstu vyåäö"
@@ -58,11 +58,12 @@ def translator_loop(text, key=None):
     chiffer = text_to_chiffer(text,key)
     morse.translator_loop(chiffer)
 
+def go(text, key=None):
+    translator_loop(text, key)
 
 
-
-if __name__ == '__main__':
-    texten = "Hej"
-    translator_loop(texten)
+# if __name__ == '__main__':
+#     texten = "Hej"
+#     translator_loop(texten)
     # a= text_to_chiffer(texten)
     # print(a)
