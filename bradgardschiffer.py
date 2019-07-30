@@ -44,7 +44,7 @@ default_key = "abcdefghi jklmnoprs tuvxyzåäö"
 # # Numbered Square
 # for i in range(27):
 #     print(i, end="\t")
-print()
+# print()
 # # # Left
 # # for i in range(27):
 # #     print(min(i%3,1), end="\t")
@@ -165,7 +165,7 @@ def send_signal(start,chiffer=None):
                     if bool(sign[i]): flash_on(pins_locations[i-1])
             sleep(4*unit)
             flash_off_all()
-            # sleep(1 * unit)
+            sleep(0.51*unit)
 
     else:
         for i in range(10):
@@ -195,8 +195,7 @@ def go(text, key=None):
 
 
 if __name__ == '__main__':
-    go("Hej alla")
-    # text = input("Give text to translate to brädgårdschiffer:\n")
-    # custom_key = input("Give key (optional) on format:"+default_key+"\n")
-
-    # go(text,custom_key)
+    # go("Hej alla")
+    text = input("Give text to translate to brädgårdschiffer:\n")
+    custom_key = input("Give key (optional) on format:"+default_key+"\n")
+    go(text,custom_key)

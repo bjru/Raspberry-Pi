@@ -10,8 +10,6 @@ import morse
 default_key = "abcde fghij klmno prstu vyåäö"
 
 
-
-#todo matcha input mot nyckel samma tecken
 def key_OK(text,key):
         sections = key.split()
         if len(key) != 25+4: #25 letters + 4 spaces (check default key)
