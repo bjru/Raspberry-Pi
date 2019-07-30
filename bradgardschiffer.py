@@ -4,13 +4,21 @@ import RPi.GPIO as GPIO
 # # Use GPIO numbers not pin numbers
 #
 chiffer_start = 4
-chiffer_pins = [17,18,27,22,23,24]
+chiffer_pins = [17,18,27,22,23,24,25,9,6,12]
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.OUT)
 GPIO.output(4, GPIO.LOW)
 for pin in chiffer_pins:
     GPIO.setup(pin, GPIO.OUT)
     GPIO.output(pin, GPIO.LOW)
+
+# chiffer_pins = [17,18,27,22,23,24,25,5,6,12]
+pins_left = [17,18,27]
+pins_right = [22,23,24]
+pins_up = [17,25,22]
+pins_down = [27,9,24]
+pins_type1 = [6]
+pins_type2 = [12]
 
 
 from time import sleep
