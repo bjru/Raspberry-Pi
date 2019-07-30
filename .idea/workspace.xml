@@ -177,16 +177,12 @@
           <line>84</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bradgardschiffer.py</url>
-          <line>159</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="symbols[letter]" language="Python" />
+        <watch expression="pins_locations" language="Python" />
       </configuration>
     </watches-manager>
   </component>

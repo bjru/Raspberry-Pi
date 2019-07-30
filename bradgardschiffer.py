@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 # # Use GPIO numbers not pin numbers
 #
 chiffer_start = 9
 chiffer_pins = [17,18,27,22,23,24,25,4,8,7]
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setup(9, GPIO.OUT)
-# GPIO.output(9, GPIO.LOW)
-# for pin in chiffer_pins:
-#     GPIO.setup(pin, GPIO.OUT)
-#     GPIO.output(pin, GPIO.LOW)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(9, GPIO.OUT)
+GPIO.output(9, GPIO.LOW)
+for pin in chiffer_pins:
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, GPIO.LOW)
 
 pins_left = [17,18,27]
 pins_right = [22,23,24]
@@ -129,11 +129,11 @@ def flash(on, port):
     # if not isinstance(on, bool): TypeError("Must be boolean")
     # if not isinstance(port, int): TypeError("Must be integer")
     if on:
-        # GPIO.output(port, GPIO.HIGH)
-        print("ON!", end="-----------")
+        GPIO.output(port, GPIO.HIGH)
+        # print("ON!", end="-----------")
     else:
-        # GPIO.output(port, GPIO.LOW)
-        print("off!")
+        GPIO.output(port, GPIO.LOW)
+        # print("off!")
 
 def flash_on(port):
     # if not isinstance(port, int): TypeError("Must be integer")
@@ -157,12 +157,12 @@ def send_signal(start,chiffer=None):
     unit = 0.5
     if not start:
 
-        for (sign, pins) in zip(chiffer, pins_locations):
+        for sign in chiffer:
             if isinstance(sign, str) and sign == " ":
                 sleep(3 * unit)
             else:
                 for i in range(1,len(sign)):
-                    if bool(power): flash_on(pins)
+                    if bool(sign[i]): flash_on(pins_locations[i-1])
             sleep(4*unit)
             flash_off_all()
             # sleep(1 * unit)
