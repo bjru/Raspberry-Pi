@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 # # Use GPIO numbers not pin numbers
 #
 chiffer_start = 4
-chiffer_pins = [17,18,27,22,23,24,25,9,6,12]
+chiffer_pins = [17,18,27,22,23,24,25,9,8,7]
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.OUT)
 GPIO.output(4, GPIO.LOW)
@@ -12,13 +12,14 @@ for pin in chiffer_pins:
     GPIO.setup(pin, GPIO.OUT)
     GPIO.output(pin, GPIO.LOW)
 
-# chiffer_pins = [17,18,27,22,23,24,25,5,6,12]
 pins_left = [17,18,27]
 pins_right = [22,23,24]
 pins_up = [17,25,22]
 pins_down = [27,9,24]
-pins_type1 = [6]
-pins_type2 = [12]
+pins_type1 = [8]
+pins_type2 = [7]
+
+pins_locations = [pins_left, pins_right, pins_up, pins_down, pins_type1, pins_type2]
 
 
 from time import sleep
@@ -137,6 +138,10 @@ def flash(on, port):
 def flash_on(port):
     # if not isinstance(port, int): TypeError("Must be integer")
     flash(True, port)
+def flash_on_multiple(ports):
+    # if not isinstance(port, int): TypeError("Must be integer")
+    for pin in ports:
+        flash(True, pin)
 def flash_off(port):
     # if not isinstance(port, int): TypeError("Must be integer")
     flash(False, port)
@@ -152,10 +157,9 @@ def send_signal(start,chiffer=None):
     unit = 0.5
     if not start:
 
-        for display in chiffer:
-            for (power, pin) in zip(display, chiffer_pins):
-                if power != 0:
-                    flash_on(pin)
+        for (power, pins) in zip(chiffer, pins_locations):
+            if bool(power):
+                flash_on(pins)
             sleep(4*unit)
             flash_off_all()
 
