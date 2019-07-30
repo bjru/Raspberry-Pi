@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 import RPi.GPIO as GPIO
 # Use GPIO numbers not pin numbers
-morse_port = 17
-morse_start = 4
+morse_port = 7
+morse_start = 9
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(morse_start, GPIO.OUT)
