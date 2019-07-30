@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 # # Use GPIO numbers not pin numbers
 #
 chiffer_start = 4
 chiffer_pins = [17,18,27,22,23,24]
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setup(4, GPIO.OUT)
-# GPIO.output(4, GPIO.LOW)
-# for pin in chiffer_pins:
-#     GPIO.setup(pin, GPIO.OUT)
-#     GPIO.output(pin, GPIO.LOW)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(4, GPIO.OUT)
+GPIO.output(4, GPIO.LOW)
+for pin in chiffer_pins:
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, GPIO.LOW)
 
 
 from time import sleep
@@ -132,10 +132,10 @@ def flash_on(port):
 def flash_off(port):
     # if not isinstance(port, int): TypeError("Must be integer")
     flash(False, port)
-def flash_off_all(port):
+def flash_off_all():
     # if not isinstance(port, int): TypeError("Must be integer")
     for pin in chiffer_pins:
-        flash(False, port)
+        flash(False, pin)
 
 # Controls the flashes of light
 def send_signal(start,chiffer=None):
